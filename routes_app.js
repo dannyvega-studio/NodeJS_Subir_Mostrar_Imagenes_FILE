@@ -6,7 +6,12 @@ const fs = require("fs");
 
 router.get("/",function(req,res){
     /*Buscar el ususario*/
-    res.render("app/home")
+    Imagen.find({})
+        .populate("creator")
+        .exec(function(err,imagenes){
+            if(err)console.log(err);
+            res.render("app/home",{imagenes:imagenes});
+        });
 });
 
 // REST //

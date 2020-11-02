@@ -1,4 +1,8 @@
 extends ../layout.pug
 block contenido
-    p Hola #{user.email}
-    
+    for imagen in imagenes
+        div(class="img-container")
+            h1= imagen.title
+            img(class="main-img", src="/public/imagenes/"+imagen._id+"."+imagen.extension)                
+            if(typeof imagen.creator != "undefined")
+                p El usuario que subio la imagen es:  #{imagen.creator.email}            
